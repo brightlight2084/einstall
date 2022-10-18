@@ -1,6 +1,6 @@
-# 一键安装(忘记要Star了，点了再走哦~)
-
-> ### 大家想要的工具可以在[心愿清单](https://github.com/fishros/install/issues/2)中提出,说不定会有魔法师满足你的心愿
+# 一键安装
+1. 在fishros包基础上进行修改，将其改为本地版。
+2. 增加配置ubuntu的时区功能。
 
 ## 工具列表
 
@@ -16,43 +16,13 @@
 - 一键安装:Docker(支持amd64和arm64)  [贡献@alyssa](https://github.com/alyssa1024)
 - 一键安装:cartographer  [贡献@小鱼&Catalpa ](https://github.com/fishros)
 - 一键安装:微信客户端  [贡献@小鱼](https://github.com/fishros)
-
+- 一键配置:双系统下，配置ubuntu的时区，避免影响windows
 
 
 ## 使用方法
 ```
-wget http://fishros.com/install -O fishros && . fishros
-```
-
-## 如何自动选择(Dockerfile中使用)
-
-目前一键安装支持从配置文件自动输入选项，你需要手动运行一次一键安装，使用完毕后会自动产生 `/tmp/fish_install.yaml`。
-
-使用下面的指令将配置文件拷贝到当前终端即可。
-
-```
-cp /tmp/fish_install.yaml ./
-```
-
-### Dockerfile中使用
-
-使用样例如下
-
-```
-RUN apt update \ 
-    && apt install wget python3-yaml -y  \
-    # 安装melodic
-    && echo "chooses:\n" > fish_install.yaml \
-    && echo "- {choose: 1, desc: '一键安装:ROS(支持ROS和ROS2,树莓派Jetson)'}\n" >> fish_install.yaml \
-    && echo "- {choose: 1, desc: 更换源继续安装}\n" >> fish_install.yaml \
-    && echo "- {choose: 2, desc: 清理三方源}\n" >> fish_install.yaml \
-    && echo "- {choose: 1, desc: melodic(ROS1)}\n" >> fish_install.yaml \
-    && echo "- {choose: 1, desc: melodic(ROS1)桌面版}\n" >> fish_install.yaml \
-    && wget http://fishros.com/install  -O fishros && /bin/bash fishros \
-    # 进行最后的清理
-    && rm -rf /var/lib/apt/lists/*  /tmp/* /var/tmp/* \
-    && apt-get clean && apt autoclean 
-```
+git clone 这个仓库
+执行 ./einstall
 
 
 ## 贡献指南
