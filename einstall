@@ -1,0 +1,6 @@
+sudo apt install python3-distro python3-yaml  -y
+if [ $UID -eq 0 ];then
+    apt-get install sudo 
+fi
+sudo python3 install.py
+. ~/.bashrc
